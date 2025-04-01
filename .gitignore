@@ -1,0 +1,50 @@
+# Dependency directories
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS specific files
+.DS_Store
+Thumbs.db
+.directory
+
+# Vercel
+.vercel/
+
+# Build artifacts
+coverage/
+.output/
+.nuxt/
+.nitro/
+.cache/
+
+# Misc
+.eslintcache
+.stylelintcache
+.history/
+.temp 
