@@ -26,32 +26,27 @@ export default {
           title: '准备美国区 Apple ID',
           substeps: [
             {
-              title: '创建美国区 Apple ID',
-              description: '如果你已经有美国区 Apple ID，可以跳过此步骤。否则，需要创建一个新的 Apple ID，并选择美国作为国家/地区。',
-              hasImage: true
-            },
-            {
-              title: '验证账户',
-              description: '使用有效的电子邮件地址，按照提示完成注册和验证过程。',
-              hasImage: false
-            },
-            {
-              title: '登录 App Store',
-              description: '在你的 iOS 设备上，使用新创建的美国区 Apple ID 登录 App Store。',
-              hasImage: true
-            },
-            {
-              title: '替代方法一：从中国区转换为美国区',
+              title: '方法一：从中国区转换为美国区',
               description: '先注册中国区 Apple ID，无需使用 VPN。在 App Store 购买一个免费应用后，前往 Apple ID 账户页面（appleid.apple.com）登录并将地区更改为美国。请注意，更改地区前需要确保中国区账户内没有余额，并且取消所有订阅服务。',
               hasImage: false
             },
             {
-              title: '替代方法二：直接购买现成的美区 Apple ID',
-              description: '如果你不想自己注册，可以前往 mtcer.com 等专业平台直接购买一个现成的美区 Apple ID。这种方式更为便捷，但请选择信誉良好的平台以确保账户安全和有效性。',
+              title: '方法二：直接购买现成的美区 Apple ID',
+              description: '如果你不想自己转换区域，可以前往 mtcer.com 等专业平台直接购买一个现成的美区 Apple ID。这种方式更为便捷，但请选择信誉良好的平台以确保账户安全和有效性。',
               hasImage: false
+            },
+            {
+              title: '验证账户',
+              description: '无论选择哪种方法获取美区 Apple ID，都需要确保账户能够正常登录和使用。',
+              hasImage: false
+            },
+            {
+              title: '登录 App Store',
+              description: '在你的 iOS 设备上，使用美国区 Apple ID 登录 App Store。',
+              hasImage: true
             }
           ],
-          tips: '创建美国区 Apple ID 时，可以不需要提供美国信用卡，只需选择"None"作为付款方式。后续我们会使用 Gift Card 充值。如果使用替代方法一转区，转区后可能需要提供美国地址信息，可使用美国酒店或商业地址。购买现成账号时，注意修改密码和安全问题，增强账户安全性。'
+          tips: '使用美国区 Apple ID 时，可以不需要提供美国信用卡，只需选择"None"作为付款方式。后续我们会使用 Gift Card 充值。如果使用方法一转区，转区后可能需要提供美国地址信息，可使用美国酒店或商业地址。购买现成账号时，注意修改密码和安全问题，增强账户安全性。'
         },
         {
           title: '设置美国线路 VPN',
@@ -64,12 +59,12 @@ export default {
             {
               title: '安装 VPN 应用',
               description: '在你的设备上下载并安装所选 VPN 的应用程序。',
-              hasImage: true
+              hasImage: false
             },
             {
               title: '连接到美国服务器',
               description: '打开 VPN 应用，选择并连接到美国的服务器。确保连接成功，你的 IP 地址已更改为美国地址。',
-              hasImage: true
+              hasImage: false
             }
           ],
           tips: '选择速度较快的服务器，这将有助于提高后续操作的流畅度。在整个过程中保持 VPN 连接，以避免地理位置限制问题。'
@@ -90,7 +85,7 @@ export default {
             {
               title: '打开 App Store',
               description: '使用你的美国区 Apple ID 登录 App Store。',
-              hasImage: false
+              hasImage: true
             },
             {
               title: '搜索并下载 ChatGPT',
@@ -110,12 +105,12 @@ export default {
             },
             {
               title: '获取礼品卡代码',
-              description: '完成购买后，你将收到礼品卡的兑换代码。保存好这个代码。',
+              description: '完成购买后，你将收到礼品卡的兑换代码。保存好这个代码。代码示例：<span class="code-example">XVLM572LNXF3T9FA</span>',
               hasImage: false
             },
             {
               title: '兑换礼品卡',
-              description: '打开 App Store，点击右上角的个人头像，选择"兑换礼品卡或代码"，然后输入你的礼品卡代码进行兑换。',
+              description: '打开 App Store，点击右上角的个人头像，选择"兑换礼品卡或代码"，然后输入你的礼品卡代码进行兑换。<br><br>示例代码：<div class="code-block"><span class="code-example">XVLM572LNXF3T9FA</span></div>',
               hasImage: true
             },
             {

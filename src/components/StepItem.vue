@@ -1,5 +1,5 @@
 <template>
-  <div class="step">
+  <div :id="'step-' + number" class="step">
     <div class="step-number">{{ number }}</div>
     <h3>{{ title }}</h3>
     
@@ -19,6 +19,9 @@
             <div v-else class="image-placeholder">
               [{{ substep.title }} 的截图示意]
             </div>
+            <div class="search-icon-wrapper">
+              <Search size="18" color="white" />
+            </div>
           </div>
           <div class="image-hint">点击图片可查看大图</div>
         </div>
@@ -26,7 +29,10 @@
     </div>
     
     <div class="tips">
-      <div class="tips-title">💡 小贴士</div>
+      <div class="tips-title">
+        <Lightbulb size="18" class="tips-icon" />
+        <span>小贴士</span>
+      </div>
       <p>{{ tips }}</p>
     </div>
     
@@ -42,11 +48,14 @@
 
 <script>
 import ImageModal from './ImageModal.vue'
+import { Search, Lightbulb } from 'lucide-vue-next'
 
 export default {
   name: 'StepItem',
   components: {
-    ImageModal
+    ImageModal,
+    Search,
+    Lightbulb
   },
   props: {
     number: {
@@ -79,7 +88,11 @@ export default {
         '使用 Google 账号登录': '/src/assets/images/screenshots/google-login.jpeg',
         '找到订阅选项': '/src/assets/images/screenshots/upgrade-chatgpt-plus.PNG',
         '完成订阅': '/src/assets/images/screenshots/in-app-purchase.jpg',
-        '搜索并下载 ChatGPT': '/src/assets/images/screenshots/get-plus.png'
+        '搜索并下载 ChatGPT': '/src/assets/images/screenshots/AppStore-ChatGPT.jpeg',
+        '打开 App Store': '/src/assets/images/screenshots/AppStore-US.jpg',
+        '登录 App Store': '/src/assets/images/screenshots/AppStore-US.jpg',
+        '兑换礼品卡': '/src/assets/images/screenshots/reddem gitcard.jpeg',
+        '切换到美区 Apple ID': '/src/assets/images/screenshots/switch-appstore-id.jpg'
       };
       
       return imageMap[title];
@@ -179,25 +192,22 @@ export default {
   width: 90%;
 }
 
-.image-container::after {
-  content: "🔍";
+.search-icon-wrapper {
   position: absolute;
   bottom: 10px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.6);
-  color: white;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.image-container:hover::after {
+.image-container:hover .search-icon-wrapper {
   opacity: 1;
 }
 
@@ -248,6 +258,13 @@ export default {
   font-weight: 600;
   color: var(--primary);
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.tips-icon {
+  margin-right: 5px;
+  color: var(--primary);
 }
 
 /* Responsive adjustments */

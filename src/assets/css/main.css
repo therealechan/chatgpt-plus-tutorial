@@ -33,6 +33,30 @@ body {
   font-weight: 500;
 }
 
+.code-example {
+  font-family: 'Courier New', monospace;
+  background-color: #f0f7ff;
+  color: #0066cc;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 1px dashed #99c2ff;
+}
+
+.code-block {
+  background-color: #f8f9fa;
+  border: 1px solid #e3e6e8;
+  border-radius: 6px;
+  padding: 12px 15px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.code-block .code-example {
+  font-size: 1.2em;
+}
+
 @media (max-width: 768px) {
   .overview-card {
     flex-basis: calc(50% - 20px);

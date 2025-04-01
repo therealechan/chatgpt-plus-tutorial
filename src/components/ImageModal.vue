@@ -2,14 +2,21 @@
   <div v-if="show" class="image-modal-overlay" @click="closeModal">
     <div class="image-modal-content" @click.stop>
       <img :src="imageSrc" :alt="imageAlt" class="modal-image" />
-      <button class="close-button" @click="closeModal">×</button>
+      <button class="close-button" @click="closeModal">
+        <X size="24" />
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import { X } from 'lucide-vue-next'
+
 export default {
   name: 'ImageModal',
+  components: {
+    X
+  },
   props: {
     show: {
       type: Boolean,

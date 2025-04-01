@@ -6,6 +6,7 @@
       :icon="card.icon"
       :title="card.title"
       :description="card.description"
+      :index="index"
     />
   </div>
 </template>
@@ -49,9 +50,23 @@ export default {
 
 <style scoped>
 .overview {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .overview {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 </style> 
