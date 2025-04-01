@@ -1,9 +1,10 @@
 <template>
-  <div class="overview-card" @click="scrollToSection" role="button" tabindex="0" @keyup.enter="scrollToSection">
-    <div class="icon">{{ icon }}</div>
+  <div class="overview-card" @click="scrollToStep">
+    <div class="icon-wrapper">
+      <div class="icon">{{ icon }}</div>
+    </div>
     <h3 class="card-title">{{ title }}</h3>
     <p class="card-desc">{{ description }}</p>
-    <div class="view-section">查看详情 ↓</div>
   </div>
 </template>
 
@@ -29,10 +30,24 @@ export default {
     }
   },
   methods: {
-    scrollToSection() {
-      const targetSection = document.getElementById(`step-${this.index + 1}`);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToStep() {
+      let stepNumber;
+      
+      // Map cards to their specific step numbers
+      if (this.title === 'Apple Gift Card') {
+        stepNumber = 4;
+      } else if (this.title === 'ChatGPT App') {
+        stepNumber = 5;
+      } else {
+        // For other cards, use index + 1
+        stepNumber = this.index + 1;
+      }
+      
+      const stepElement = document.getElementById(`step-${stepNumber}`);
+      
+      if (stepElement) {
+        // Smooth scroll to the element
+        stepElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }
@@ -42,56 +57,51 @@ export default {
 <style scoped>
 .overview-card {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  cursor: pointer;
+  align-items: center;
+  border-top: 4px solid var(--primary);
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 .overview-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
-.overview-card:focus {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
+.icon-wrapper {
+  background-color: var(--light);
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: var(--primary);
+  font-size: 2.2rem;
 }
 
 .card-title {
   font-weight: 600;
   margin-bottom: 10px;
   color: var(--dark);
+  font-size: 1.1rem;
 }
 
 .card-desc {
   color: var(--gray);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   margin: 0;
-}
-
-.view-section {
-  color: var(--primary);
-  font-size: 0.8rem;
-  margin-top: 10px;
-  font-weight: 500;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.overview-card:hover .view-section {
-  opacity: 1;
+  line-height: 1.5;
 }
 </style> 

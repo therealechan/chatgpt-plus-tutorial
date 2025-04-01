@@ -1,14 +1,17 @@
 <template>
-  <div class="steps-container">
-    <StepItem 
-      v-for="(step, index) in steps" 
-      :key="index"
-      :number="index + 1"
-      :title="step.title"
-      :substeps="step.substeps"
-      :tips="step.tips"
-    />
-  </div>
+  <section class="steps-section" aria-labelledby="steps-heading">
+    <h2 id="steps-heading" class="sr-only">详细步骤指南</h2>
+    <div class="steps-container">
+      <StepItem 
+        v-for="(step, index) in steps" 
+        :key="index"
+        :number="index + 1"
+        :title="step.title"
+        :substeps="step.substeps"
+        :tips="step.tips"
+      />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -159,6 +162,39 @@ export default {
         }
       ]
     }
+  },
+  mounted() {
+    // Add Schema.org structured data for HowTo
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      
+      const howToData = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "如何开通 ChatGPT Plus 会员服务",
+        "description": "详细的步骤指南，帮助您从零开始开通 ChatGPT Plus 会员服务，包括准备美区Apple ID、设置VPN、下载应用等所有必要步骤。",
+        "totalTime": "PT1H",
+        "estimatedCost": {
+          "@type": "MonetaryAmount",
+          "currency": "USD",
+          "value": "19.99"
+        },
+        "step": this.steps.map((step, index) => ({
+          "@type": "HowToStep",
+          "name": step.title,
+          "position": index + 1,
+          "itemListElement": step.substeps.map((substep, subIndex) => ({
+            "@type": "HowToDirection",
+            "position": subIndex + 1,
+            "text": substep.title + ": " + substep.description.replace(/<[^>]*>/g, '')
+          }))
+        }))
+      };
+      
+      script.textContent = JSON.stringify(howToData);
+      document.head.appendChild(script);
+    }
   }
 }
 </script>
@@ -166,5 +202,17 @@ export default {
 <style scoped>
 .steps-container {
   margin-bottom: 40px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 </style> 

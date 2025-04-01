@@ -1,40 +1,41 @@
 <template>
-  <div :id="'step-' + number" class="step">
-    <div class="step-number">{{ number }}</div>
-    <h3>{{ title }}</h3>
+  <section :id="'step-' + number" class="step" aria-labelledby="step-title-{{number}}">
+    <div class="step-number" aria-hidden="true">{{ number }}</div>
+    <h3 :id="'step-title-' + number">{{ title }}</h3>
     
     <div class="substeps">
-      <div v-for="(substep, index) in substeps" :key="index" class="substep">
-        <div class="substep-title">{{ substep.title }}</div>
+      <article v-for="(substep, index) in substeps" :key="index" class="substep">
+        <h4 class="substep-title">{{ substep.title }}</h4>
         <div class="substep-desc" v-html="substep.description"></div>
         <div v-if="substep.hasImage" class="image-wrapper">
           <div class="image-container">
             <img 
               v-if="getImageSrc(substep.title)" 
               :src="getImageSrc(substep.title)" 
-              :alt="substep.title" 
+              :alt="title + ' - ' + substep.title" 
               class="screenshot" 
               @click="openModal(getImageSrc(substep.title), substep.title)"
+              loading="lazy"
             />
-            <div v-else class="image-placeholder">
+            <div v-else class="image-placeholder" aria-label="图片占位符">
               [{{ substep.title }} 的截图示意]
             </div>
-            <div class="search-icon-wrapper">
+            <div class="search-icon-wrapper" aria-hidden="true">
               <Search size="18" color="white" />
             </div>
           </div>
           <div class="image-hint">点击图片可查看大图</div>
         </div>
-      </div>
+      </article>
     </div>
     
-    <div class="tips">
+    <aside class="tips" aria-label="提示信息">
       <div class="tips-title">
-        <Lightbulb size="18" class="tips-icon" />
+        <Lightbulb size="18" class="tips-icon" aria-hidden="true" />
         <span>小贴士</span>
       </div>
       <p>{{ tips }}</p>
-    </div>
+    </aside>
     
     <!-- Image Modal -->
     <ImageModal 
@@ -43,7 +44,7 @@
       :image-alt="modalImageAlt"
       @close="closeModal"
     />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -85,14 +86,14 @@ export default {
   methods: {
     getImageSrc(title) {
       const imageMap = {
-        '使用 Google 账号登录': '/src/assets/images/screenshots/google-login.jpeg',
-        '找到订阅选项': '/src/assets/images/screenshots/upgrade-chatgpt-plus.PNG',
-        '完成订阅': '/src/assets/images/screenshots/in-app-purchase.jpg',
-        '搜索并下载 ChatGPT': '/src/assets/images/screenshots/AppStore-ChatGPT.jpeg',
-        '打开 App Store': '/src/assets/images/screenshots/AppStore-US.jpg',
-        '登录 App Store': '/src/assets/images/screenshots/AppStore-US.jpg',
-        '兑换礼品卡': '/src/assets/images/screenshots/reddem gitcard.jpeg',
-        '切换到美区 Apple ID': '/src/assets/images/screenshots/switch-appstore-id.jpg'
+        '使用 Google 账号登录': '/assets/images/screenshots/google-login.jpeg',
+        '找到订阅选项': '/assets/images/screenshots/upgrade-chatgpt-plus.PNG',
+        '完成订阅': '/assets/images/screenshots/in-app-purchase.jpg',
+        '搜索并下载 ChatGPT': '/assets/images/screenshots/AppStore-ChatGPT.jpeg',
+        '打开 App Store': '/assets/images/screenshots/AppStore-US.jpg',
+        '登录 App Store': '/assets/images/screenshots/AppStore-US.jpg',
+        '兑换礼品卡': '/assets/images/screenshots/reddem gitcard.jpeg',
+        '切换到美区 Apple ID': '/assets/images/screenshots/switch-appstore-id.jpg'
       };
       
       return imageMap[title];
@@ -107,8 +108,30 @@ export default {
       this.showModal = false;
       document.body.style.overflow = ''; // Restore scrolling
     }
+  },
+  mounted() {
+    // Add Schema.org structured data for this step (HowToStep)
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      
+      const howToStepData = {
+        "@context": "https://schema.org",
+        "@type": "HowToStep",
+        "name": this.title,
+        "position": this.number,
+        "itemListElement": this.substeps.map((substep, index) => ({
+          "@type": "HowToDirection",
+          "position": index + 1,
+          "text": substep.title + ": " + substep.description.replace(/<[^>]*>/g, '')
+        }))
+      };
+      
+      script.textContent = JSON.stringify(howToStepData);
+      document.head.appendChild(script);
+    }
   }
-}
+};
 </script>
 
 <style scoped>

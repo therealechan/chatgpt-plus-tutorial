@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "lucide-vue-next": "^0.486.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-intersection-observer": "^0.1.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
