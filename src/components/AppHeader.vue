@@ -47,9 +47,16 @@ h1 {
   font-size: 1.2rem;
   opacity: 0.9;
   margin-bottom: 15px;
+  padding: 0 15px;
 }
 
 @media (max-width: 768px) {
+  header {
+    padding: 30px 0;
+    margin-bottom: 25px;
+    border-radius: 10px;
+  }
+  
   .title-container {
     flex-direction: row;
     align-items: center;
@@ -63,6 +70,40 @@ h1 {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 25px 0;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .title-container {
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 8px;
+  }
+  
+  .logo {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 15px;
   }
 }
 </style> 

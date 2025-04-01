@@ -68,12 +68,18 @@ export default {
   justify-content: center;
   align-items: center;
   border-top: 4px solid var(--primary);
-  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+  cursor: pointer; 
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .overview-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.overview-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
 }
 
 .icon-wrapper {
@@ -103,5 +109,46 @@ export default {
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .overview-card {
+    padding: 20px 15px;
+  }
+  
+  .icon-wrapper {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 12px;
+  }
+  
+  .icon {
+    font-size: 1.8rem;
+  }
+  
+  .card-title {
+    font-size: 1rem;
+  }
+  
+  .card-desc {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview-card {
+    padding: 18px 12px;
+    margin-bottom: 15px;
+  }
+  
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .icon {
+    font-size: 1.6rem;
+  }
 }
 </style> 

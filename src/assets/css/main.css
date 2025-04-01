@@ -13,17 +13,23 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   color: var(--dark);
   background-color: #f9f9f9;
+  -webkit-text-size-adjust: 100%;
 }
 
 .container {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 15px;
 }
 
 .highlight {
@@ -42,6 +48,7 @@ body {
   font-weight: bold;
   letter-spacing: 1px;
   border: 1px dashed #99c2ff;
+  word-break: break-word;
 }
 
 .code-block {
@@ -51,32 +58,69 @@ body {
   padding: 12px 15px;
   margin: 10px 0;
   text-align: center;
+  overflow-x: auto;
 }
 
 .code-block .code-example {
-  font-size: 1.2em;
+  font-size: 1.1em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+  
+  .container {
+    padding: 15px 10px;
+  }
+  
   .overview-card {
     flex-basis: calc(50% - 20px);
   }
   
   .step {
-    padding: 20px;
+    padding: 20px 15px;
   }
   
   .step-number {
-    left: 20px;
+    left: 15px;
   }
 }
 
 @media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+  
   .overview-card {
     flex-basis: 100%;
   }
   
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .code-block {
+    padding: 10px;
   }
 } 

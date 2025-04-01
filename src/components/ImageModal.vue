@@ -52,6 +52,13 @@ export default {
   align-items: center;
   z-index: 1000;
   padding: 20px;
+  animation: fadeIn 0.2s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .image-modal-content {
@@ -87,9 +94,50 @@ export default {
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.2s;
+  touch-action: manipulation;
 }
 
 .close-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .image-modal-overlay {
+    padding: 15px;
+  }
+  
+  .image-modal-content {
+    max-width: 95%;
+    max-height: 95%;
+  }
+  
+  .modal-image {
+    max-height: 85vh;
+  }
+  
+  .close-button {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-modal-overlay {
+    padding: 10px;
+  }
+  
+  .image-modal-content {
+    max-width: 98%;
+  }
+  
+  .close-button {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+  }
 }
 </style> 

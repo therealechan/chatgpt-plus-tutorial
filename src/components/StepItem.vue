@@ -197,6 +197,7 @@ export default {
 
 .substep-desc {
   color: var(--gray);
+  word-wrap: break-word;
 }
 
 .image-wrapper {
@@ -235,7 +236,7 @@ export default {
 }
 
 .screenshot {
-  max-width: 90%;
+  max-width: 100%;
   max-height: 300px;
   object-fit: contain;
   border-radius: 8px;
@@ -292,17 +293,94 @@ export default {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .step {
+    padding: 25px 15px;
+  }
+  
+  .step-number {
+    left: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .step h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .substeps {
+    margin-left: 10px;
+  }
+  
+  .substep {
+    padding-left: 25px;
+  }
+  
+  .substep:before {
+    width: 16px;
+    height: 16px;
+    top: 6px;
+  }
+  
   .image-container {
     max-height: 250px;
+    width: 100%;
   }
   
   .screenshot {
-    max-width: 100%;
     max-height: 250px;
   }
-  
+}
+
+@media (max-width: 480px) {
   .step {
-    padding: 20px;
+    padding: 20px 12px;
+  }
+  
+  .step-number {
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+  }
+  
+  .step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-left: 5px;
+  }
+  
+  .substeps {
+    margin-left: 5px;
+  }
+  
+  .substep {
+    padding-left: 22px;
+    margin-bottom: 12px;
+  }
+  
+  .substep:before {
+    width: 14px;
+    height: 14px;
+    top: 5px;
+  }
+  
+  .substep-title {
+    font-size: 1rem;
+  }
+  
+  .image-container {
+    max-height: 200px;
+  }
+  
+  .screenshot {
+    max-height: 200px;
+  }
+  
+  .tips {
+    padding: 12px;
+    margin-top: 15px;
   }
 }
 </style> 

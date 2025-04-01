@@ -74,4 +74,48 @@ export default {
 .faq-answer {
   color: var(--gray);
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .faq {
+    padding: 25px 20px;
+    margin-bottom: 25px;
+  }
+  
+  .faq h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .faq-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq {
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  
+  .faq h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  
+  .faq-item {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .faq-question {
+    font-size: 0.95rem;
+  }
+  
+  .faq-answer {
+    font-size: 0.9rem;
+  }
+}
 </style> 
