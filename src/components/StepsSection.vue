@@ -35,7 +35,7 @@ export default {
             },
             {
               title: '方法二：直接购买现成的美区 Apple ID',
-              description: '如果你不想自己转换区域，可以前往 mtcer.com 等专业平台直接购买一个现成的美区 Apple ID。这种方式更为便捷，但请选择信誉良好的平台以确保账户安全和有效性。',
+              description: '如果你不想自己转换区域，可以前往 <a href="https://mtcer.com" target="_blank" rel="noopener noreferrer" class="highlight-url">mtcer.com</a> 等专业平台直接购买一个现成的美区 Apple ID。这种方式更为便捷，但请选择信誉良好的平台以确保账户安全和有效性。',
               hasImage: false
             },
             {
@@ -214,5 +214,23 @@ export default {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+:deep(.highlight-url) {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+  border: 1px solid #ffeaa7;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+:deep(.highlight-url:hover) {
+  background-color: #ffeaa7;
+  color: #6c5700;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 </style> 
